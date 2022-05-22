@@ -1,11 +1,10 @@
 package org.prgrms.springbootbasic.entity.voucher;
 
-import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
 import org.prgrms.springbootbasic.entity.customer.Customer;
 
-public abstract class Voucher implements Serializable {
+public abstract class Voucher {
 
     private final UUID voucherId;
     private UUID customerId;
