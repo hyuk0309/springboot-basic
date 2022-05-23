@@ -101,7 +101,7 @@ Spring MVC를 적용해 Console이 아닌, Web에서 서비스 이용하게 기�
       - Form
         ```
         "name" : "pang"
-        "email" : pang@gmail.com
+        "email" : "pang@gmail.com"
         ```
     - 손님 삭제 기능.
       - POST /customers/{customerId}/delete
@@ -122,7 +122,7 @@ Spring MVC를 적용해 Console이 아닌, Web에서 서비스 이용하게 기�
   - 쿠폰 생성 API.
     - POST /vouchers
     - Body(Json)
-      ``` json
+      ```
       {
         "voucherType" : "fixed" | "percent",
         "amount" : 2000, (fixed 타입 경우)
@@ -140,17 +140,16 @@ Spring MVC를 적용해 Console이 아닌, Web에서 서비스 이용하게 기�
 
 - 도메인 설계도
 
-![domain](/Users/hyuk/Documents/프로그래머스데브코스/데브코스 관련 문서/과제관련문서/springboot/domain.png)
+![domain](https://user-images.githubusercontent.com/29492667/169812256-86b49f5e-d954-4082-b06e-b1b24a3555cd.png)
 
 <br/>
 
 - 테이블 설계도
 
-![database](/Users/hyuk/Documents/프로그래머스데브코스/데브코스 관련 문서/과제관련문서/springboot/database.png)
+![database](https://user-images.githubusercontent.com/29492667/169812334-12c05037-1a62-49c5-8ad3-cbe71f6691a4.png)
 
 <br/>
 
 - 프로젝트 설계도
 
-![class](/Users/hyuk/Documents/프로그래머스데브코스/데브코스 관련 문서/과제관련문서/springboot/class.png)
-
+![class](https://user-images.githubusercontent.com/29492667/169812397-3770af93-e362-4c6d-abdc-f671cff3d383.png)
