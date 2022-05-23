@@ -1,243 +1,156 @@
 # SpringBoot Basic Weekly Mission
-스프링부트 basic 위클리미션을 코드리뷰하는 Repository입니다.
 
-주차별 과제는 노션에서 확인하세요!
-[노션에서 미션 확인가기](https://www.notion.so/backend-devcourse/Part1-3-38f57acca0dd490db11393701417943a)
+## 프로젝트 소개
+
+데브코스에서 3주 동안 스프링부트를 학습하면서, 학습 내용을 적용시켜 점진적으로 발전시킨 개인 프로젝트.
+
+도메인: 쿠폰 관리 시스템.
+
 <br/>
 
-## SpringBoot Part1 Weekly Mission
+## 프로젝트 환경
 
-(기본) **바우처 관리 애플리케이션**
+### Front-End
 
-- [x] Maven / Gradle 로 프로젝트를 실제로 구성하고 이때 Spring Boot CLI를 개발PC에 설치해서 명령어들을 사용해보고 프로젝트를 만든다. 그리고 IDE (IntelliJ)에서 실행시켜 본다.
+- Terminal
+- Spring Thymeleaf
 
-- [X] 바우처 관리 Command-line Application을 만들어본다.
+### Back-End
 
-    - 참고: [https://dzone.com/articles/interactive-console-applications-in-java](https://dzone.com/articles/interactive-console-applications-in-java)
-    - [X] 스프링부트 애플리케이션으로 만든다. (Web기능이 없이만듭니다. 즉, 서버가 띄지 않고 커맨드라인 애플리케이션으로 동작해야한다.)
-    - [X] 프로그램이 시작하면 다음과 같이 지원가능한 명령어를 알려준다.
+- Spring Boot
+- Spring Core
+- Spring MVC
+- Spring JDBC
+- Spring Thymeleaf
 
-  ```bash
-  === Voucher Program ===
-  Type **exit** to exit the program.
-  Type **create** to create a new voucher.
-  Type **list** to list all vouchers.
-  ```
+### Database
 
-    - [X] create / list 커맨드를 지원한다.
-        - create 커맨드를 통해 바우처를 생성할수 있다. (FixedAmountVoucher, PercentDiscountVoucher)
-        - list 커맨드를 통해 만들어진 바우처를 조회할 수 있다.
-        - 바우처 정보를 매모리에 관리한다. 어플리케이션이 종료가 되어 데이터가 모두 사라져도 괜찮습니다. (나중에 영속성을 가지도록 변경할거에요 걱정마세요!)
+- MySQL
 
-- [X] 적절한 로그를 기록하고 `logback` 설정을해서 에러는 파일로 기록된다.
+<br/>
 
-- [X] 실행가능한 `jar` 파일을 생성한다.
+## 프로젝트 상세 소개
 
-(심화) 파일을 통한 데이터관리 기능과 고객 블랙 리스트 명단 관리기능
+### Week 1
 
-- [X] 메모리 관리가 아닌 파일로 관리가 되는 Repository를 한번 만들어보세요.
-    - 기존 메모리 레포지토리는 지우지 말고 개발 프로파일에서만 동작하게 해보세요.
-- [X] 고객 블랙 리스트 명단을 작성한다.
-- customer_blacklist.csv 파일을 만들고 스프링 애플리케이션에서 해당 파일을 읽을 수 있고 블랙 리스트조회 할 수있다 (추가할 필요는 없어요. 블랙리스트는 파일로만 관리된다고 가정합니다.)
-- [ ] YAML 프라퍼티를 만들고 어떤 설정을 만들수 있을지 고민해본다.
+Spring Core를 이용해 콘솔 쿠폰 관리 시스템 만들기.
 
+<br/>
 
-### 구현할 기능 목록
-- UI
-    - [X] Text-IO 이용해 UI 구현하기
-      - [X] 메뉴 출력 기능 개발
-      - [X] 바우처 생성 커맨드 개발
-      - [X] 바우처 조회 커맨드 개발
-      - [X] 블랙 리스트 조회 커맨드 개발
-- 핵심 로직
-    - [X] Voucher 엔티티 만들기
-        - [X] FixedAmountVoucher
-        - [X] PercentDiscountVoucher
-    - [X] MemoryVoucherRepository 만들기
-        - [X] Voucher 저장
-        - [X] Voucher 전체 조회
-    - [X] MemoryVoucherService 만들기
-        - [X] Voucher 생성 & 저장
-        - [X] Voucher 조회
-    - [X] VoucherController 만들기
-    - [X] FileVoucherRepository 만들기
-      - [X] Voucher 저장
-      - [X] Voucher 전체 조회
+**구현 기능**
 
-### 1차 피드백
-- [X] java 11로 변경
-- [X] menu에 전략패턴 도입 생각해보기
-- [X] 개행도 일관성있게 사용하기
-- [X] Voucher serializable 이유
-- [X] FileVoucherRepository 메서드 1depth로 줄여보기
-- [X] ConstantString 관리 생각하기
+- 쿠폰 저장 기능 (직렬화 이용 파일에 저장)
+- 쿠폰 조회 기능 (역직렬화를 이용 파일에서 불러오기)
+- 고객 블랙 리스트 명단 조회.
 
-### 2차 피드백
-- [X] Voucher 관계 상속 관계로 수정하기
-- [X] service 계층에서 createvoucher시 create 되게
-- [X] Voucher 도메인의 FileVoucherRepository 의존성 낮추기.
-    - DTO 객체를 이용해보자.
-- [X] 파일에 로그를 남길 때 어느 레벨까지 남길지 고민해보기.
-- [X] Test 메서드 명도 신경쓰기.
-- [X] 동시 테스트 assertAll() 이용해보기.
-- [X] BeforeEach, AfterEach 하나만 하도록 코드 수정
-- [X] InstanceOf 지양하기
+<br/>
 
-## SpringBoot Part2 Weekly Mission
+### Week 2
 
-**(기본)** **바우처 관리 애플리케이션**
+Spring Jdbc를 이용해 기존 파일로 관리하던 데이터를 MySQL을 이용해 관리하기.
 
-- [X] 바우처 관리 애플리케이션에 단위테스트를 작성해보세요.
-    - 가능한 많은 단위 테스트코드를 작성하려고 노력해보세요.
-    - 엣지 케이스(예외 케이스)를 고려해서 작성해주세요.
-    - Hamcrest 의 메쳐들을 다양하게 작성해보고 익숙해져 보세요.
-- [X] 바우처 관리 애플리케이션에서도 과정에서 다루었던 고객을 적용해보세요.
-    - customers 테이블 정의 및 추가
-    - CustomerRepository 추가 및 JdbcTemplate을 사용해서 구현
-- [X] (1주차를 파일로 관리하게 했다.) 바우처 정보를 DB로 관리해보세요.
-    - 바우처에 엔터티에 해당하는 vouchers 테이블을 한번 정의해보세요.
-    - 바우처 레포지토리를 만들어보세요. (JdbcTemplate을 사용해서 구현)
-    - 기존의 파일에서 바우처를 관리한 것을 vouchers 테이블을 통해서 CRUD가 되게 해보세요.
+<br/>
 
-**(심화)** **바우처 지갑을 만들어보세요.**
+**구현 기능**
 
-- [X] 특정 고객에게 바우처를 할당할 수 있습니다.
-- [X] 고객이 어떤 바우처를 보유하고 있는지 조회할 수 있어야 합니다.
-- [X] 고객이 보유한 바우처를 제거할 수 있어야 합니다.
-- [X] 특정 바우처를 보유한 고객을 조회할 수 있어야 합니다.
+- Week 1에서 만든 기능을 MySQL에서 가능하도록 이전시키기.
+- 고객 테이블 추가
+  - 고객 생성 기능.
+  - 고객 조회 기능.
+- 특정 고객에게 바우처 할당 기능.
+- 고객이 어떤 바우처를 보유하고 있는지 조회 기능.
+- 고객이 보유한 바우처 제거 기능.
+- 특정 바우처를 보유한 고객 조회 기능.
 
+<br/>
 
-### 구현 기능 목록  (기본 요구사항)
-- [X] JDBC 연결
-- [X] customers table 만들기
-- [X] JdbcCustomerRepository 만들기
-  - [X] 회원 저장 기능 개발
-  - [X] 회원 전체 조회 기능 개발
-  - [X] 회원 전체 삭제 개발
-  - [X] 회원 이름 수정 기능 개발
-- [X] Customer 엔티티 개발
-- [X] CustomerService 개발
-  - [X] 회원 추가 기능 개발
-  - [X] 회원 조회 기능 개발
-- [X] ConsoleView에 기능 추가
-  - [X] 회원 생성 기능 추가
-  - [X] 회원 조회 기능 추가
-- [X] vouchers table 만들기 (비정규화 방식으로 만듬)
-- [X] JdbcVoucherRepository 만들기
-  - [X] Voucher 전체 조회
-  - [X] Voucher 저장
-  - [X] Voucher 전체 삭제
-  - [X] Voucher Id로 조회
-- [X] 테스트 추가 & 전체적으로 리팩토링 (예외처리 등..)
+### Week 3
 
-### 구현 기능 목록 (심화 요구사항)
-- [X] AOP 사용해 보기 (Logger)
-- [X] vouchers table 수정 (참조키로 customers table와 연결)
-- [X] 특정 고객에게 바우처 할당 기능
-  - [X] vouchers table의 외래키 값 변경 (Repository)
-  - [X] service 계층 개발
-  - [X] ConsoleView, Controller 기능 추가
-- [X] 고객이 어떤 바우처를 보유하고 있는지 조회할 수 있어야 합니다.
-  - [X] 고객이 갖고 있는 바우처 Repository에서 조회 기능
-  - [X] 고객이 갖고 있는 바우처 조회 기능 (Service)
-  - [X] 고객이 갖고 있는 바우처 조회 기능 (Controller)
-- [X] 고객이 보유한 바우처 제거 기능
-  - [X] 특정 customer_id를 가진 voucher 제거 기능 (Repository)
-  - [X] voucher 고객이 보유한 바우처 제거 기능 (Service)
-  - [X] 고객이 보유한 바우처 제거 기능 (Controller)
-- [X] 특정 바우처를 보유한 고객 조회 기능
-  - [X] 특정 바우처를 가진 고객 조회 기능 개발 (Repository)
-  - [X] 특정 바우처를 가진 고객 조회 기능 (Service)
-  - [X] 특정 바우처를 가진 고객 조회 기능 (Controller)
-  
-### 1차 피드백
-- [X] 필요 없는 파일 삭제 -> HELP.md
-- [X] textIo 사용하지 않는 view 만들기
-- [X] 상수와 필드는 개행으로 분리 (가독성을 위해)
-- [X] Entity와 DTO 종속성 생각하기
-- [X] Customer 원시타입 VO로 관리하기.
-- [X] 비지니스적인 검증은 서비스 레이어에서 수행 (입력시 서비스 검증까지 할 필요 없음)
-- [X] 예외 메세지 작성하는 습관 키우기
-- [X] SQL 문을 글로벌 상수로 관리하면 IDE의 기능을 사용할 수 없음 & SQL 예약어는 대문자로 사용하는게 가독성 측면에서 좋다.
-- [X] 계층에 맞는 메소드명 사용하기
+Spring MVC를 적용해 Console이 아닌, Web에서 서비스 이용하게 기능 추가하기.
 
-### 2차 피드백
-- [X] Entity -> DTO 전용 Converter 도입하기
-- [X] Voucher 클래서 isFixed, isPercent 추상 메서드가 맞다는 생각이 든다.
-- [X] Voucher getCustomerId Optional이 필요한지 생각하기. (null 체크만 하기 때문에 굳이 필요 없음)
-- [X] VO는 불편이 중요하다 (**기본**)
+<br/>
 
-### 3차 피드백
-- [X] text-io 외부 라이브러리 완전 제거하기
-- [X] VO인 Email에 검증로직 추가해 보기
-- [X] VO인 Name에 검증로직 추가해 보기
-- [X] 상수대신 enum 사용하기
+- 관리자 페이지 개발
+  - 쿠폰
+    - 쿠폰 전체 조회 페이지.
+      - GET /vouchers
+    - 쿠폰 상세 조회 페이지.
+      - GET /vouchers/{voucherId}
+    - 쿠폰 입력 페이지.
+      - GET /vouchers/new
+    - 쿠폰 입력 요청.
+      - POST /vouchers/new
+      - Form
+        ```
+        "voucherType" : "fixed" | "percent"
+        "amount" : 2000 (fixed 타입 경우)
+        "percent" : 20 (percent 타입 경우)
+        ```
+    - 쿠폰 삭제 기능.
+      - POST /vouchers/{voucherId}/delete
 
+  - 손님
+    - 손님 전체 조회 페이지.
+      - GET /customers
+    - 손님 상세 조회 페이지.
+      - GET /customers/{customerId}
+    - 손님 등록 페이지.
+      - GET /customers/new
+    - 손님 등록 요청.
+      - POST /customers/new
+      - Form
+        ```
+        "name" : "pang"
+        "email" : pang@gmail.com
+        ```
+    - 손님 삭제 기능.
+      - POST /customers/{customerId}/delete
 
-## SpringBoot Part3 Weekly Mission
+<br/>
 
-  **(기본) 바우처 서비스 관리페이지 개발하기**
+- API 개발 (/api/v1)
+  - 전체 쿠폰 조회 API.
+    - GET /vouchers
+    - Query Paramters
+      ~~~
+      //특정 바우처 타입 조회
+      "voucherType" : "fixed" | "percent" 
+      //특정 기간에 생성된 바우처 조회
+      "start" : "2022-04-27"
+      "end" : "2022-04-29"
+      ~~~
+  - 쿠폰 생성 API.
+    - POST /vouchers
+    - Body(Json)
+      ``` json
+      {
+        "voucherType" : "fixed" | "percent",
+        "amount" : 2000, (fixed 타입 경우)
+        "percent" : 50,  (percent 타입 경우)
+      }
+      ```
+  - 쿠폰 삭제 API
+    - DELETE /vouchers/{voucherId}
+  - 특정 쿠폰 조회 API.
+    - GET /vouchers/{voucherId}
 
-- Spring MVC를 적용해서 thymeleaf 템플릿을 설정해보세요.
-- 커맨드로 지원했던 기능을 thymeleaf를 이용해서 관리페이지를 만들고 다음 기능을 지원가능하게 해보세요
-  - [X] 조회페이지
-  - [X] 상세페이지
-  - [X] 입력페이지
-  - [X] 삭제기능
-  
+<br/>
 
-  **(기본) 바우처 서비스의 API 개발하기**
+## 최종 프로젝트 설계도
 
-- Spring MVC를 적용해서 JSON과 XML을 지원하는 REST API를 개발해보세요
-  - [X] 전체 조회기능
-    - 엔티티 -> DTO Converter 도입 생각.
-  - [X] 조건별 조회기능 (바우처 생성기간 및 특정 할인타입별)
-    - [X] 특정 할인타입 바우처 조회
-    - [X] 바우처 생성기간 이용 바우처 조회
-  - [X] 바우처 추가기능
-  - [X] 바우처 삭제기능
-  - [X] 바우처 아이디로 조회 기능
+- 도메인 설계도
 
-- To do
-  - REST API 고민
-  - Controller Validation
-  
+![domain](/Users/hyuk/Documents/프로그래머스데브코스/데브코스 관련 문서/과제관련문서/springboot/domain.png)
 
-### 관리자 페이지 구현 목록 ###
-- [X] 시작페이지 만들기 
-- [X] 회원 관리 페이지 만들기
-  - [X] 전체조회
-  - [X] 상세페이지
-  - [X] 입력페이지
-  - [X] 삭제기능
+<br/>
 
-### PR 궁금한 부분 ###
-- 바우처 검색 API 설계에 대해서
-- 로깅 기준 
-- Repository SQL 변수로 빼는 부분 피드백은 아직 고민 중
-- 개발하지 않는 모듈은 삭제 ? 하위 호환성을 위해 남겨두고 싶음
-- 로그레벨 생각 -> 내 생각 정리해서 말하기
+- 테이블 설계도
 
+![database](/Users/hyuk/Documents/프로그래머스데브코스/데브코스 관련 문서/과제관련문서/springboot/database.png)
 
-### 피드백
-- [X] 바우처 검색 API 설계
-  - 검색 조건은 query parameter를 이용해 조건을 받고, controller에서 분기처리 하는게 좋다. 
-  - 분기가 너무 많아지면, 전략패턴을 도입하자.
-- [X] 로깅 기준
-  - 특별한 기준이 존재하지는 않는다. (실무에서는 로그를 잘 안 사용한다. -> 프레임워크에서 잘 찍어줘서 굳이 필요하지 않다.)
-  - 로그가 필요하다고 생각되는 부분에 로그를 남기면 된다.
-- [X] Repository SQL을 상수로 빼기 ?
-  - 이 부분에 정답은 없지만, IDE의 기능을 최대한 사용하는 방법을 이용하면 된다.
-- [X] enum은 toString을 적절히 오버라이드 했다. 따라서 이를 활용할 수 있으면 활용하자.
-- [X] RestController에서 DTO를 바로 반환하는 것보다 ResponseEntity를 사용하는 것이 Response Http Message를 정교하게 제어할 수 있어서 좋다.
-- [X] RestController에서 RestAPI 반환 Http Method에서 Header 값들도 고민하기
-  - 단일 생성 요청 API -> Response Http Message에 단일 건 조회가능한 URI를 Location에 쓴다. 
-  - 삭제 요청 API -> Response Http Message에 204 no_content 사용한다.
-- [X] Persistence Layer에서 save의 의미는 insert와 update를 의미한다. 
-  - insert만 하는 메서드는 insert 네이밍이 적절하다.
-- [X] simpleJdbcInsert를 이용하면 Insert 후 pk 값을 반환 받을 수 있다.
-  - 내 코드의 경우 단순 Insert SQL이 아니라, Insert SQL에 UUID_TO_BIN 함수를 사용해, 오히려 복잡해짐.
-- [X] new URI vs URI.create()
-  - new URI는 외부에서 URI를 생성할 때 사용한다. (예외의 경우 URISyntaxException를 바로 던진다.)
-  - URI.create() 내부에서 URI에 오류가 없다고 생각하는 경우 사용한다. (예외의 경우 URISyntaxException를 IllegalArgumentException으로 바꿔준다.)
-- [X] 사용 후 닫아줘야 하는 리소스를 사용하면 try-finally 대신 try-with-resources를 사용하자.
+<br/>
+
+- 프로젝트 설계도
+
+![class](/Users/hyuk/Documents/프로그래머스데브코스/데브코스 관련 문서/과제관련문서/springboot/class.png)
+
