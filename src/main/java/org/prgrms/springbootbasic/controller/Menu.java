@@ -1,55 +1,55 @@
 package org.prgrms.springbootbasic.controller;
 
 import java.util.function.Function;
-import org.prgrms.springbootbasic.controller.console.VoucherController;
+import org.prgrms.springbootbasic.controller.console.ConsoleController;
 
 public enum Menu {
 
-    EXIT(voucherController -> false),
-    CREATE(voucherController -> {
-        voucherController.createVoucher();
+    EXIT(consoleController -> false),
+    CREATE(consoleController -> {
+        consoleController.createVoucher();
         return true;
     }),
-    LIST(voucherController -> {
-        voucherController.printList();
+    LIST(consoleController -> {
+        consoleController.printList();
         return true;
     }),
-    BLACKLIST(voucherController -> {
-        voucherController.printBlackList();
+    BLACKLIST(consoleController -> {
+        consoleController.printBlackList();
         return true;
     }),
-    CREATE_CUSTOMER(voucherController -> {
-        voucherController.createCustomer();
+    CREATE_CUSTOMER(consoleController -> {
+        consoleController.createCustomer();
         return true;
     }),
-    LIST_CUSTOMER(voucherController -> {
-        voucherController.printAllCustomers();
+    LIST_CUSTOMER(consoleController -> {
+        consoleController.printAllCustomers();
         return true;
     }),
-    ASSIGN_VOUCHER(voucherController -> {
-        voucherController.assignVoucher();
+    ASSIGN_VOUCHER(consoleController -> {
+        consoleController.assignVoucher();
         return true;
     }),
-    LIST_CUSTOMER_VOUCHER(voucherController -> {
-        voucherController.listCustomerVoucher();
+    LIST_CUSTOMER_VOUCHER(consoleController -> {
+        consoleController.listCustomerVoucher();
         return true;
     }),
-    DELETE_CUSTOMER_VOUCHER(voucherController -> {
-        voucherController.deleteCustomerVoucher();
+    DELETE_CUSTOMER_VOUCHER(consoleController -> {
+        consoleController.deleteCustomerVoucher();
         return true;
     }),
-    LIST_CUSTOMER_HAVING_SPECIFIC_VOUCHER_TYPE(voucherController -> {
-        voucherController.listCustomerHavingSpecificVoucherType();
+    LIST_CUSTOMER_HAVING_SPECIFIC_VOUCHER_TYPE(consoleController -> {
+        consoleController.listCustomerHavingSpecificVoucherType();
         return true;
     });
 
-    private final Function<VoucherController, Boolean> process;
+    private final Function<ConsoleController, Boolean> process;
 
-    Menu(Function<VoucherController, Boolean> process) {
+    Menu(Function<ConsoleController, Boolean> process) {
         this.process = process;
     }
 
-    public boolean apply(VoucherController voucherController) {
-        return process.apply(voucherController);
+    public boolean apply(ConsoleController consoleController) {
+        return process.apply(consoleController);
     }
 }

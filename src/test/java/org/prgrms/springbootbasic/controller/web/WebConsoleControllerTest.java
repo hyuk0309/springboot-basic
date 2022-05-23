@@ -23,7 +23,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 @WebMvcTest(controllers = WebVoucherController.class)
-class WebVoucherControllerTest {
+class WebConsoleControllerTest {
 
     @MockBean
     VoucherService voucherService;

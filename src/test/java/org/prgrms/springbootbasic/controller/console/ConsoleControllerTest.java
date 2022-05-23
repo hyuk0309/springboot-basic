@@ -24,7 +24,7 @@ import org.prgrms.springbootbasic.service.VoucherService;
 import org.prgrms.springbootbasic.view.View;
 
 @ExtendWith(MockitoExtension.class)
-class VoucherControllerTest {
+class ConsoleControllerTest {
 
     @Mock
     View view;
@@ -35,11 +35,11 @@ class VoucherControllerTest {
     @Mock
     CustomerService customerService;
 
-    VoucherController voucherController;
+    ConsoleController consoleController;
 
     @BeforeEach
     void init() {
-        voucherController = new VoucherController(voucherService, view, customerService);
+        consoleController = new ConsoleController(voucherService, view, customerService);
     }
 
     @DisplayName("EXIT 테스트")
@@ -49,7 +49,7 @@ class VoucherControllerTest {
         when(view.inputMenu()).thenReturn(Menu.EXIT);
 
         //when
-        boolean actual = voucherController.process();
+        boolean actual = consoleController.process();
 
         //then
         assertThat(actual).isFalse();
@@ -62,7 +62,7 @@ class VoucherControllerTest {
         when(view.inputMenu()).thenReturn(Menu.LIST);
 
         //when
-        voucherController.process();
+        consoleController.process();
 
         //then
         var inOrder = inOrder(view, voucherService);
@@ -79,7 +79,7 @@ class VoucherControllerTest {
         when(view.selectVoucherType()).thenReturn(VoucherType.FIXED);
 
         //when
-        voucherController.process();
+        consoleController.process();
 
         //then
         var inOrder = inOrder(view, voucherService);
@@ -97,7 +97,7 @@ class VoucherControllerTest {
         when(view.selectVoucherType()).thenReturn(VoucherType.PERCENT);
 
         //when
-        voucherController.process();
+        consoleController.process();
 
         //then
         var inOrder = inOrder(view, voucherService);
@@ -114,7 +114,7 @@ class VoucherControllerTest {
         when(view.inputMenu()).thenReturn(Menu.BLACKLIST);
 
         //when
-        voucherController.process();
+        consoleController.process();
 
         //then
         var inOrder = inOrder(view);
@@ -131,7 +131,7 @@ class VoucherControllerTest {
         when(view.selectEmail()).thenReturn("test@gmail.com");
 
         //when
-        voucherController.process();
+        consoleController.process();
 
         //then
         var inOrder = inOrder(view, customerService);
@@ -150,7 +150,7 @@ class VoucherControllerTest {
         when(view.selectCustomerId()).thenReturn(UUID.randomUUID());
 
         //when
-        voucherController.process();
+        consoleController.process();
 
         //then
         var inOrder = inOrder(view, voucherService);
@@ -169,7 +169,7 @@ class VoucherControllerTest {
         when(voucherService.findCustomerVoucher(customerId)).thenReturn(Collections.emptyList());
 
         //when
-        voucherController.process();
+        consoleController.process();
 
         //then
         var inOrder = inOrder(view, voucherService);
@@ -186,7 +186,7 @@ class VoucherControllerTest {
         when(view.selectVoucherId()).thenReturn(UUID.randomUUID());
 
         //when
-        voucherController.process();
+        consoleController.process();
 
         //then
         var inOrder = inOrder(view, customerService);
@@ -205,7 +205,7 @@ class VoucherControllerTest {
             .thenReturn(Collections.emptyList());
 
         //when
-        voucherController.process();
+        consoleController.process();
 
         //then
         var inOrder = inOrder(view, customerService);

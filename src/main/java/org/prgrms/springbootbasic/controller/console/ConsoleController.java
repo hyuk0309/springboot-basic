@@ -15,15 +15,15 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 @Profile("console")
-public class VoucherController {
+public class ConsoleController {
 
-    private static final Logger logger = LoggerFactory.getLogger(VoucherController.class);
+    private static final Logger logger = LoggerFactory.getLogger(ConsoleController.class);
 
     private final VoucherService voucherService;
     private final View view;
     private final CustomerService customerService;
 
-    public VoucherController(VoucherService voucherService, View view,
+    public ConsoleController(VoucherService voucherService, View view,
         CustomerService customerService) {
         this.voucherService = voucherService;
         this.view = view;
